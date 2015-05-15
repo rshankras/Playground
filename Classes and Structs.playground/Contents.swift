@@ -107,6 +107,7 @@ rect.draw()
 */
 
 
+
 /* Class initializers
 
 class Shape {
@@ -205,11 +206,13 @@ squrNew.draw()
 
 */
 
+
 /* Computed Property
 
 class Sqaure {
     
     var length: Double = 0
+
     
     var area: Double {
         get {
@@ -226,8 +229,8 @@ square.area = 4 // set call
 
 square.length = 6
 square.area // get call
-
 */
+
 
 /* lazy property
 
@@ -252,16 +255,18 @@ person.message
 
 */
 
-/* Property Observers
 
+/* Property Observers */
+
+/*
 class Square {
 
     var length: Double = 0 {
         willSet(newLength) {
-            self.length = abs(newLength)
+            println("Setting length \(self.length) to new length \(newLength)")
         }
         didSet {
-            println("Length is modified")
+            println("Length is modified - do some action here")
         }
     }
     
@@ -279,10 +284,14 @@ let square = Square()
 square.length = -6
 square.area
 
+square.length = 5
 */
 
 
-/* Struct example for retrieving Geoip details
+
+/* Struct example for retrieving Geoip details */
+
+/*
 
 struct GeoDetails {
     
@@ -317,11 +326,15 @@ NSURLSession.sharedSession().dataTaskWithURL(url!, completionHandler: { (data: N
         var error:NSError?
         if let result = data {
             if let dict = NSJSONSerialization.JSONObjectWithData(result, options: NSJSONReadingOptions.AllowFragments, error: &error) as? NSDictionary {
-
+                
+                //
+                
                 geoDetails = GeoDetails(country: dict["country"] as! String, ip: dict["ip"] as! String, isp: dict["isp"] as! String, latitude: dict["latitude"] as! Double, longitude: dict["longitude"] as! Double, timeZone: dict["timezone"] as! String)
                 
                 
                 println(geoDetails?.description())
+                
+                //
                 
             } else {
                 println("Error Processing data")
@@ -333,6 +346,7 @@ NSURLSession.sharedSession().dataTaskWithURL(url!, completionHandler: { (data: N
 }).resume()
 
 */
+
 
 /* Pass by value
 

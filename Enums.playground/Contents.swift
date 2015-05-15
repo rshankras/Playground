@@ -11,6 +11,7 @@ employee.1
 
 */
 
+
 // Tuples parameter with names
 
 /*
@@ -57,38 +58,24 @@ default:
 
 /* Enum */
 
-/* Introduction, why you need enums
-
-let attachmentTypePDF = 1
-let attachmentTypePNG = 2
-let attachmentTypeTxt = 3
-
-enum AttachmentType {
-    case PMG, PDF, Txt
-}
-
-let type = AttachmentType.PDF
-
-let type: AttachmentType = .PDF
-
-*/
-
 /*
 
 enum Month: String {
     case January = "January", February = "February", March = "March", April = "April", May = "May", June = "June", July = "July", August = "August", September = "September", October = "October", November = "November", December = "December"
 }
-*/
 
-//let currentMonth = Month.May
+let currentMonth = Month.May
 
 //let currentMonth:Month = .May
 
-//currentMonth.rawValue
+currentMonth.rawValue
+
+*/
 
 // enum with associated values
 
 /*
+
 enum Month {
     case January(String), February(String), March(String), April(String), May(String), June(String), July(String), August(String), September(String), October(String), November(String), December(String)
 }
@@ -122,6 +109,7 @@ month.monthsLeftForYearEnd()
 
 */
 
+
 // enum with init
 
 /*
@@ -154,7 +142,6 @@ protocol LivingThings {
 }
 
 class Animal: LivingThings {
-    
     func eat() -> String {
         return "Animal Food"
     }
@@ -177,8 +164,8 @@ cat.eat()
 
 */
 
-// Protocol with Optional methods
 
+// Protocol with Optional methods
 
 /*
 
@@ -210,10 +197,44 @@ john.speak()
 
 */
 
+// Same Protocol with Optional methods -
+
+/*
+
+@objc protocol LivingThings {
+    var eyeColour: UIColor {get set}
+    func eat() -> String
+    optional func speak() -> String
+}
+
+@objc class Human: LivingThings {
+     var eyeColour: UIColor = UIColor.redColor()
+func eat() -> String {
+    return "Human Food"
+}
+
+func speak() -> String {
+    return "Human can Speak"
+    }
+}
+
+@objc class Animal: LivingThings {
+    var eyeColour: UIColor = UIColor.redColor()
+    func eat() -> String {
+        return "Animal Food"
+    }
+}
+
+let john = Human()
+
+john.eat()
+
+john.speak()
+*/
+
 
 // Protocol for implementing delegate pattern
 
-/*
 
 protocol ImportDataDelegate {
     func startImport()
@@ -247,8 +268,6 @@ let demoImport = DemoImport()
 demoImport.delegate = DataImport()
 
 demoImport.startProcess()
-
-*/
 
 
 

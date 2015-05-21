@@ -235,6 +235,7 @@ john.speak()
 
 // Protocol for implementing delegate pattern
 
+/*
 
 protocol ImportDataDelegate {
     func startImport()
@@ -269,6 +270,6 @@ demoImport.delegate = DataImport()
 
 demoImport.startProcess()
 
-
+*/
 
 

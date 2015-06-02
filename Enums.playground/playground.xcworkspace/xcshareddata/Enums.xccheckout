@@ -7,18 +7,18 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>B8E0A207-676D-41F2-9B3A-8CEA18B5FC65</string>
 	<key>IDESourceControlProjectName</key>
-	<string>Enums</string>
+	<string>playground</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>BFC5DFD3DAE99576E906C90E8C5BADB6B74C7480</key>
 		<string>https://github.com/rshankras/Playground.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Enums.playground</string>
+	<string>Enums.playground/playground.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>BFC5DFD3DAE99576E906C90E8C5BADB6B74C7480</key>
-		<string>..</string>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/rshankras/Playground.git</string>

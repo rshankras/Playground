@@ -230,8 +230,8 @@ let john = Human()
 john.eat()
 
 john.speak()
-*/
 
+*/
 
 // Protocol for implementing delegate pattern
 

@@ -4,6 +4,8 @@ import UIKit
 
 import XCPlayground
 
+let page = XCPlaygroundPage.currentPage
+
 // sum of numbers 
 
 var sum = 0
@@ -20,13 +22,13 @@ sum // print the sum
 var fibonacci = 0
 var temp1 = 1
 var temp2 = 0
-println(fibonacci)
+print(fibonacci)
 
 for j in 0...10 {
     temp2 = fibonacci
     fibonacci += temp1
     temp1 = temp2
-    println(fibonacci)
+    print(fibonacci)
 }
 
 
@@ -37,29 +39,46 @@ let image = UIImage(named: "funny_image")
 let demoView = UIView(frame: CGRectMake(0, 0, 250, 250))
 
 demoView.backgroundColor = UIColor.redColor()
-XCPShowView("MyView", demoView)
+
+page.liveView = demoView
 
 
 // Making Asynchronous call in Playground
 
-XCPSetExecutionShouldContinueIndefinitely(continueIndefinitely: true)
+page.needsIndefiniteExecution = true
 
 let url = NSURL(string: "http://www.telize.com/geoip")
+let request = NSURLRequest(URL: url!)
 
-NSURLSession.sharedSession().dataTaskWithURL(url!, completionHandler: { (data: NSData!, response: NSURLResponse!, error: NSError!) -> Void in
-    if error == nil {
-        var error:NSError?
-        if let result = data {
-            if let dict = NSJSONSerialization.JSONObjectWithData(result, options: NSJSONReadingOptions.AllowFragments, error: &error) as? NSDictionary {
-                println(dict)
-            } else {
-                println("Error Processing data")
-            }
-        }
-    } else {
-        println(error.localizedDescription)
+let session = NSURLSession.sharedSession()
+
+
+let task = session.dataTaskWithRequest(request) { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+    guard error == nil else {
+        print("Error while calling the webservice " + error!.localizedDescription)
+        return
     }
-}).resume()
+    
+    let status = (response as! NSHTTPURLResponse).statusCode
+    
+    guard status == 200 else {
+        print("Received response status code as \(status)")
+        return
+    }
+    
+    guard data != nil else {
+        print("data not received from webservice")
+        return
+    }
+    do {
+        let dict = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments)
+        print(dict)
+    } catch let error as NSError {
+        print("Error parsing JSON response " + error.localizedDescription)
+    }
+}
+
+task.resume()
 
 
 

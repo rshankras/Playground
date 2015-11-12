@@ -1,23 +1,21 @@
-//: Playground - noun: a place where people can play
-
 import UIKit
 
-// Variables and Constants
+//: Variables and Constants
 
 var myStr = "Swift"
 var myValue = 23.1 //(Implicit variable declaration or type inference)
 var myDoubleValue: Double = 23 //(Explicit variable declaration)
 
-// let
+//: let
 
 let myAge = 38
 let message = "My age is " + String(myAge) //(Converting value to a String)
 let newMessage = "My age is \(myAge)" //(Converting value to a String using backslash or interpolation)
 
-// String
+//: String
 var movie:String = "Independence Day "
 
-count(movie) // count of string
+movie.characters.count // count of string
 
 // Use NSString to format a double or float value
 var range = NSString(format: "%.2f", 24.5)
@@ -25,7 +23,7 @@ var range = NSString(format: "%.2f", 24.5)
 // Concatenate String values
 movie += String(range)
 
-// Array
+//: Array
 
 // Declarations
 // var fruits = [“Orange”, “Apple”, “Grapes”] – Short declartion
@@ -50,9 +48,9 @@ fruits.sort { (a, b) -> Bool in
     a < b
 }
 // retrieve index using find
-find(fruits, "Mangoes")
+fruits.indexOf("Mangoes")
 
-// Dicionary
+//: Dicionary
 
 // Declaration
 // var employees = [1:”John”,2:”Peter”,3:”David”] // Short form
@@ -67,37 +65,37 @@ employees[4] = "Bob"
 employees.removeValueForKey(3)
 
 
-// Control flow
+//: Control flow
 
 // if else
 if fruits[0] == "Grapes" {
-    println("for breakfast")
+    print("for breakfast")
 } else if fruits[0] == "Apple" {
-    println("for lunch")
+    print("for lunch")
 } else {
-    println("Nothing")
+    print("Nothing")
 }
 
 // for statements
 
 // exclusive range
 for index in 0..<fruits.count {
-    println(fruits[index])
+    print(fruits[index])
 }
 
 // inclusive range
 for index in 0...fruits.count-1 {
-    println(fruits[index])
+    print(fruits[index])
 }
 
 // iterate array items
 for index in fruits {
-    println(index)
+    print(index)
 }
 
 // traditional for statement
 for var index=0; index < fruits.count; index++ {
-    println(fruits[index])
+    print(fruits[index])
 }
 
 // switch case
@@ -108,27 +106,27 @@ var index:Int = 1
 
 switch index {
 case 1, 3 :
-    println("for breakfast")
+    print("for breakfast")
 case 2, 4 :
-    println("for lunch")
+    print("for lunch")
 default :
-    println("None")
+    print("None")
 }
 // while and do while
 
 index = 0
 while index < fruits.count {
-    println(fruits[index])
+    print(fruits[index])
     index++
 }
 
 index = 0
-do {
-    println(fruits[index])
+repeat {
+    print(fruits[index])
     index++
 } while index < fruits.count
 
-// functions 
+//: functions
 
 // with and without paramters
 
@@ -145,26 +143,26 @@ func sum() -> (Int) {
 func sum(addNumber1 number1:Int, withNumber2 number2: Int) -> (Int) {
     return number1 + number2
 }
-println(sum(addNumber1: 10, withNumber2: 20))
+print(sum(addNumber1: 10, withNumber2: 20))
 
 // function with same local and external paramter name
 
-func sum(#number1:Int, #withNumber2: Int) -> (Int) {
+func sum(number1 number1:Int, withNumber2: Int) -> (Int) {
     return number1 + withNumber2
 }
 
-println(sum(number1: 10, withNumber2: 20))
+print(sum(number1: 10, withNumber2: 20))
 
 // function with default paramter value
 
 func sum(number1:Int, withNumber2: Int = 20) -> (Int) {
     return number1 + withNumber2
 }
-println(sum(10))
+print(sum(10))
 
 // function with variadic paramters
 
-// Variadic parameters
+//: Variadic parameters
 func totalSum(numbers:Int...) -> Int {
     var sum = 0
     for number in numbers {
@@ -180,8 +178,9 @@ var employee = "John"
 func greetings(inout employee:String) {
     employee += "!"
 }
-println(greetings(&employee))
-println(&employee)
 
+greetings(&employee)
+
+print(employee)
 
 

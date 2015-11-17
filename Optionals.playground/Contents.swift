@@ -32,8 +32,8 @@ if work?.description != nil {
 }
 
 if let desc = work?.description {
-    println(desc)
+    print(desc)
 } else {
-    println("Not available")
+    print("Not available")
 }
 

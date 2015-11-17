@@ -21,14 +21,16 @@ movie.characters.count // count of string
 var range = NSString(format: "%.2f", 24.5)
 
 // Concatenate String values
-movie += String(range)
+movie += "\(range)"
 
 //: Array
 
 // Declarations
+
 // var fruits = [“Orange”, “Apple”, “Grapes”] – Short declartion
-// var fruits:Array = [“Orange”, “Apple”, “Grapes”] – Long declaration
+//var fruits:Array<String> = ["Orange","Apple", "Grapes"] //– Long declaration
 // var fruits:[String] = [] – Assign empty array
+
 var fruits:[String] = ["Orange", "Apple", "Grapes"] // short declaration with type.
 
 // insert item at index
@@ -47,15 +49,18 @@ fruits.removeAtIndex(1)
 fruits.sort { (a, b) -> Bool in
     a < b
 }
+
 // retrieve index using find
 fruits.indexOf("Mangoes")
 
 //: Dicionary
 
 // Declaration
+
 // var employees = [1:”John”,2:”Peter”,3:”David”] // Short form
 // var employees:Dictionary = [1:”John”,2:”Peter”,3:”David”] // Long form
 // var employees:[Int:String] = Dictionary() // Empty dictionary
+
 var employees:[Int:String] = [1:"John",2:"Peter",3:"David"] //Short form with type
 
 // Add new item to dictionary
@@ -89,8 +94,8 @@ for index in 0...fruits.count-1 {
 }
 
 // iterate array items
-for index in fruits {
-    print(index)
+for fruit in fruits {
+    print(fruit)
 }
 
 // traditional for statement
@@ -99,20 +104,22 @@ for var index=0; index < fruits.count; index++ {
 }
 
 // switch case
-var index:Int = 1
+var index:Int = 3
 
 // supports more than 1 value
 // no need of break statement
 
 switch index {
-case 1, 3 :
+case 1:
     print("for breakfast")
+case 3:
+    print("for evening")
 case 2, 4 :
     print("for lunch")
 default :
     print("None")
 }
-// while and do while
+// while and repeat while
 
 index = 0
 while index < fruits.count {
@@ -143,6 +150,9 @@ func sum() -> (Int) {
 func sum(addNumber1 number1:Int, withNumber2 number2: Int) -> (Int) {
     return number1 + number2
 }
+
+print(sum(10, number2: 20))
+
 print(sum(addNumber1: 10, withNumber2: 20))
 
 // function with same local and external paramter name
@@ -155,10 +165,10 @@ print(sum(number1: 10, withNumber2: 20))
 
 // function with default paramter value
 
-func sum(number1:Int, withNumber2: Int = 20) -> (Int) {
-    return number1 + withNumber2
+func sum(number1:Int, withNumberDefault2: Int = 20) -> (Int) {
+    return number1 + withNumberDefault2
 }
-print(sum(10))
+print(sum(10, withNumberDefault2: 30))
 
 // function with variadic paramters
 
@@ -170,17 +180,26 @@ func totalSum(numbers:Int...) -> Int {
     }
     return sum
 }
-totalSum(1,2,3,4,5)
+totalSum(1,2,3,4,5,6,7,8)
 
 // functon with inout paramters
 
 var employee = "John"
-func greetings(inout employee:String) {
-    employee += "!"
+func greetings(inout temp:String) {
+    temp += "!"
 }
 
 greetings(&employee)
 
 print(employee)
+
+var employee1 = "John"
+func greetings(var temp:String) {
+    temp += "!"
+}
+
+greetings(employee1)
+
+print(employee1)
 
 

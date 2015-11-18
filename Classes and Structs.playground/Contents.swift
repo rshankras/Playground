@@ -50,13 +50,12 @@ let squr = Square()
 
 squr.length = 20
 
-squr.draw()
-
-*/
+squr.draw() */
 
 
-/* class inheritance.
+/* class inheritance. */
 
+/*
 class Shape {
     var name: String = ""
     
@@ -94,7 +93,6 @@ class Rectangle:Shape {
     override func area() -> Double {
         return length * breadth
     }
-    
 }
 
 let rect = Rectangle()
@@ -103,10 +101,7 @@ rect.name = "My Rectangle"
 rect.length = 5
 rect.breadth = 10
 rect.draw()
-
 */
-
-
 
 /* Class initializers
 
@@ -133,6 +128,7 @@ class Square: Shape {
     init() {
         super.init(name: "MySquare")
     }
+    
     
     override func area() -> Double {
         return length * length
@@ -202,9 +198,7 @@ squr.draw()
 
 let squrNew = Square(length: 20)
 
-squrNew.draw()
-
-*/
+squrNew.draw() */
 
 
 /* Computed Property
@@ -227,17 +221,20 @@ class Sqaure {
 let square = Sqaure()
 square.area = 4 // set call
 
-square.length = 6
-square.area // get call
-*/
+square.length = 6 // set call length
+square.length // get call
 
+
+square.area // get call
+
+*/
 
 /* lazy property
 
 class Person {
     
     var name: String
-    
+
     init (name: String) {
         self.name = name
     }
@@ -255,18 +252,17 @@ person.message
 
 */
 
-
 /* Property Observers */
-
 /*
+
 class Square {
 
     var length: Double = 0 {
         willSet(newLength) {
-            println("Setting length \(self.length) to new length \(newLength)")
+            print("Setting length \(self.length) to new length \(newLength)")
         }
         didSet {
-            println("Length is modified - do some action here")
+            print("Length is modified - do some action here")
         }
     }
     
@@ -282,11 +278,11 @@ class Square {
 
 let square = Square()
 square.length = -6
+
 square.area
 
 square.length = 5
 */
-
 
 
 /* Struct example for retrieving Geoip details */
@@ -317,39 +313,58 @@ struct GeoDetails {
     }
 }
 
+
+let page = XCPlaygroundPage.currentPage
+
+page.needsIndefiniteExecution = true
+
 var geoDetails: GeoDetails?
 
-XCPSetExecutionShouldContinueIndefinitely(continueIndefinitely: true)
 let url = NSURL(string: "http://www.telize.com/geoip")
-NSURLSession.sharedSession().dataTaskWithURL(url!, completionHandler: { (data: NSData!, response: NSURLResponse!, error: NSError!) -> Void in
-    if error == nil {
-        var error:NSError?
-        if let result = data {
-            if let dict = NSJSONSerialization.JSONObjectWithData(result, options: NSJSONReadingOptions.AllowFragments, error: &error) as? NSDictionary {
-                
-                //
-                
-                geoDetails = GeoDetails(country: dict["country"] as! String, ip: dict["ip"] as! String, isp: dict["isp"] as! String, latitude: dict["latitude"] as! Double, longitude: dict["longitude"] as! Double, timeZone: dict["timezone"] as! String)
-                
-                
-                println(geoDetails?.description())
-                
-                //
-                
-            } else {
-                println("Error Processing data")
-            }
-        }
-    } else {
-        println(error.localizedDescription)
-    }
-}).resume()
+let request = NSURLRequest(URL: url!)
 
+let session = NSURLSession.sharedSession()
+
+
+let task = session.dataTaskWithRequest(request) { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+    guard error == nil else {
+        print("Error while calling the webservice " + error!.localizedDescription)
+        return
+    }
+    
+    let status = (response as! NSHTTPURLResponse).statusCode
+    
+    guard status == 200 else {
+        print("Received response status code as \(status)")
+        return
+    }
+    
+    guard data != nil else {
+        print("data not received from webservice")
+        return
+    }
+    do {
+        let dict = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments)
+        
+        print(dict)
+        
+        geoDetails = GeoDetails(country: dict["country"] as! String, ip: dict["ip"] as! String, isp: dict["isp"] as! String, latitude: dict["latitude"] as! Double, longitude: dict["longitude"] as! Double, timeZone: dict["timezone"] as! String)
+        
+        
+        print(geoDetails?.description())
+
+    } catch let error as NSError {
+        print("Error parsing JSON response " + error.localizedDescription)
+    }
+}
+
+task.resume()
 */
 
 
-/* Pass by value
+/* Pass by value */
 
+/*
 struct Rectangle {
 var length: Int = 0
 var breadth: Int = 0
@@ -363,12 +378,10 @@ var rectangle2 = rectangle1
 
 rectangle2.length = 24
 
-println(rectangle1.length)
-println(rectangle2.length)
+print(rectangle1.length)
+print(rectangle2.length)
 
-*/
-
-/* Pass by reference
+/* Pass by reference */
 
 class Rectangle {
     var length: Int = 0
@@ -383,9 +396,7 @@ var rectangle2 = rectangle1
 
 rectangle2.length = 24
 
-println(rectangle1.length)
-println(rectangle2.length)
+print(rectangle1.length)
+print(rectangle2.length)
 
 */
-
-

@@ -8,9 +8,7 @@ let employee = (103, "Deepak")
 
 employee.0
 employee.1
-
 */
-
 
 // Tuples parameter with names
 
@@ -20,20 +18,15 @@ let employee = (id:103, name:"Deepak")
 
 employee.id
 employee.name
-
 */
-
 
 // Tuples parameter with names and data type
 
 /*
-
 let employee:(id:Int, name:String) = (102, "Deepak")
 
 employee.id
 employee.name
-
-
 */
 
 
@@ -45,15 +38,14 @@ let employee:(id:Int, name:String) = (102, "Deepak")
 
 switch (employee) {
 case (103...105,_):
-    println("developer")
+    print("developer")
 case (106...108,_):
-    println("tester")
+    print("tester")
 case (_,"Deepak"):
-    println("CEO")
+    print("CEO")
 default:
-    println("Contractor")
+    print("Contractor")
 }
-
 */
 
 /* Enum */
@@ -69,32 +61,29 @@ let currentMonth = Month.May
 //let currentMonth:Month = .May
 
 currentMonth.rawValue
-
 */
+
 
 // enum with associated values
 
 /*
-
 enum Month {
     case January(String), February(String), March(String), April(String), May(String), June(String), July(String), August(String), September(String), October(String), November(String), December(String)
 }
 
-let currentMonth:Month = .May("Summer Vacation")
+let currentMonth: Month = .May("Summer Vacation")
 
 switch currentMonth {
 case .May(let message):
-        println(message)
+        print(message)
 default:
-    println("No Values")
+    print("No Values")
 }
-
 */
 
 // enum with member function
 
 /*
-
 enum Month: Int {
     case January = 1, February, March, April, May, June, July, August, September, October, November, December
     
@@ -106,14 +95,11 @@ enum Month: Int {
 let month: Month = .May
 
 month.monthsLeftForYearEnd()
-
 */
-
 
 // enum with init
 
 /*
-
 enum Month: Int {
     case January = 1, February, March, April, May, June, July, August, September, October, November, December
     
@@ -129,14 +115,12 @@ enum Month: Int {
 let month = Month()
 
 month.monthsLeftForYearEnd()
-
 */
 
 
 // Protocols
 
 /*
-
 protocol LivingThings {
     func eat() -> String
 }
@@ -148,7 +132,6 @@ class Animal: LivingThings {
 }
 
 class Human: LivingThings {
-    
     func eat() -> String {
         return "Human Food"
     }
@@ -161,7 +144,6 @@ john.eat()
 let cat = Animal()
 
 cat.eat()
-
 */
 
 
@@ -184,9 +166,10 @@ class Human: LivingThings, Speakable {
         return "Human Food"
     }
     
-    func speak() -> String {
+    @objc func speak() -> String {
         return "Human can Speak"
     }
+
 }
 
 let john = Human()
@@ -196,6 +179,7 @@ john.eat()
 john.speak()
 
 */
+
 
 // Same Protocol with Optional methods -
 
@@ -207,20 +191,20 @@ john.speak()
     optional func speak() -> String
 }
 
-@objc class Human: LivingThings {
-     var eyeColour: UIColor = UIColor.redColor()
-func eat() -> String {
+class Human: LivingThings {
+     @objc var eyeColour: UIColor = UIColor.redColor()
+@objc func eat() -> String {
     return "Human Food"
 }
 
-func speak() -> String {
+@objc func speak() -> String {
     return "Human can Speak"
     }
 }
 
-@objc class Animal: LivingThings {
-    var eyeColour: UIColor = UIColor.redColor()
-    func eat() -> String {
+class Animal: LivingThings {
+    @objc var eyeColour: UIColor = UIColor.redColor()
+    @objc func eat() -> String {
         return "Animal Food"
     }
 }
@@ -230,8 +214,9 @@ let john = Human()
 john.eat()
 
 john.speak()
-
 */
+
+
 
 // Protocol for implementing delegate pattern
 

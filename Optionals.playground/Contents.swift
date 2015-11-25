@@ -1,6 +1,23 @@
 //: Playground - noun: a place where people can play
 
-import UIKit
+
+// Example of Optionals
+
+/*
+var name : String?
+
+name = "Ravi"
+name = .None
+
+func getMessage(msg: String?) -> String? {
+    return msg!
+}
+
+if let msg = getMessage("Ravi") {
+    print(msg)
+}
+*/
+
 
 class Job {
     var description:String = ""
@@ -12,28 +29,29 @@ class Person {
     var work:Job?
 }
 
-let gandhi:Person = Person()
+let satya = Person()
 
-var work: Job?
+var satyaWork: Job?
 
-work = Job()
+satyaWork = Job()
 
-work!.description = "Software Developer"
+satyaWork?.description = "Software Developer"
 
-gandhi.work = work
+satya.work = satyaWork
 
-gandhi.work?.description
+satya.work?.description
 
 
-if work?.description != nil {
-    let desc = work?.description
+if satyaWork?.description != nil {
+    let desc = satyaWork?.description
 } else {
     
 }
 
-if let desc = work?.description {
+if let desc = satyaWork?.description {
     print(desc)
 } else {
     print("Not available")
 }
+
 

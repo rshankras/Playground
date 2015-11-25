@@ -4,18 +4,19 @@ import UIKit
 
 // Closure Syntax
 
-//  { (parameters) -> return type in
-//        statements
-//}
+/*
+  { (parameters) -> return type in
+        statements
+}
+*/
+
 
 /*
-
  var greetings = { (name:String, message:String) -> (String) in
      message + " " + name + " !!!"
 }
 
 greetings("Ravi","Welcome")
-
 */
 
 
@@ -28,46 +29,28 @@ var greetings =  { (name, message) -> (String) in
 }
 
 greetings("Ravi","Welcome")
-
 */
 
-// Trailing closure
-
-/*
-
-var numbers = [23,45,67,89,89,78]
-
-var sortedNumbers = sorted(numbers, {$0 > $1}) // Without trailing closure
-
-// var sortedNumbers = sorted(numbers) {$0 > $1} // represented as trailing closure
-
-sortedNumbers
-
-*/
 
 // Implicit return
-
-/*
 
 var numbers = [23,45,67,89,89,78]
 
 numbers.sort { (number1, number2) -> Bool in
-return number1 < number2
+    return number1 > number2
 }
+
 
 // numbers.sort { number1, number2 in return number1 < number2 }
 
 numbers.sort { number1, number2 in number1 < number2 }
 
 // Shorthand argumnent syntax
+numbers.sort { $0 > $1 }
 
-numbers.sort { $0 < $1 }
-
-*/
 
 // sort function
 
-/*
 
 var names = ["Ricky","Kallis","Morgan","Miller","Fletcher"]
 
@@ -81,6 +64,14 @@ item1 < item2
 
 names.sort { $0 < $1 }
 
-*/
+names
+
+
+
+
+
+
+
+
 
 

@@ -16,7 +16,7 @@ let strTemp = ["Deepak","John","Steve","Ravi","Ganesh"]
 
 func reverseString(items: Array<String>) -> Array<String> {
     
-    var temp = Array<String>()
+    _ = Array<String>()
     return items.reverse()
 }
 

@@ -10,7 +10,7 @@ var myDoubleValue: Double = 23 //(Explicit variable declaration)
 
 let myAge = 38
 let message = "My age is " + String(myAge) //(Converting value to a String)
-let newMessage = "My age is \(myAge)" //(Converting value to a String using backslash or interpolation)
+let newMessage = "My age is \(myAge)" //(Converting value to a String using backslash or interpolation
 
 //: String
 var movie:String = "Independence Day "
@@ -27,7 +27,7 @@ movie += "\(range)"
 
 // Declarations
 
-// var fruits = [“Orange”, “Apple”, “Grapes”] – Short declartion
+//var fruits = ["Orange", "Apple", "Grapes"] //– Short declartion
 //var fruits:Array<String> = ["Orange","Apple", "Grapes"] //– Long declaration
 // var fruits:[String] = [] – Assign empty array
 
@@ -47,7 +47,7 @@ fruits.removeAtIndex(1)
 
 // sort array elements
 fruits.sort { (a, b) -> Bool in
-    a < b
+    a > b
 }
 
 // retrieve index using find
@@ -57,11 +57,14 @@ fruits.indexOf("Mangoes")
 
 // Declaration
 
-// var employees = [1:”John”,2:”Peter”,3:”David”] // Short form
-// var employees:Dictionary = [1:”John”,2:”Peter”,3:”David”] // Long form
-// var employees:[Int:String] = Dictionary() // Empty dictionary
+// var employees = [1:"John",2:"Peter",3:"David"] // Short form
+
+// var employees:Dictionary<Int, String> = [1:"John",2:"Peter",3:"David"] // Long form
+
+//var employees:[Int:String] = Dictionary() // Empty dictionary
 
 var employees:[Int:String] = [1:"John",2:"Peter",3:"David"] //Short form with type
+
 
 // Add new item to dictionary
 employees[4] = "Bob"
@@ -165,10 +168,10 @@ print(sum(number1: 10, withNumber2: 20))
 
 // function with default paramter value
 
-func sum(number1:Int, withNumberDefault2: Int = 20) -> (Int) {
+func sum(number1:Int, withNumberDefault2: Int = 10) -> (Int) {
     return number1 + withNumberDefault2
 }
-print(sum(10, withNumberDefault2: 30))
+print(sum(10))
 
 // function with variadic paramters
 
@@ -180,7 +183,7 @@ func totalSum(numbers:Int...) -> Int {
     }
     return sum
 }
-totalSum(1,2,3,4,5,6,7,8)
+totalSum(1,2,3,4,5,6,7,8, 9, 10)
 
 // functon with inout paramters
 
@@ -189,10 +192,17 @@ func greetings(inout temp:String) {
     temp += "!"
 }
 
+func displayMessage(name: String) {
+    print(employee + name)
+}
+
 greetings(&employee)
 
 print(employee)
 
+displayMessage("Hamja")
+
+/*
 var employee1 = "John"
 func greetings(var temp:String) {
     temp += "!"
@@ -201,5 +211,5 @@ func greetings(var temp:String) {
 greetings(employee1)
 
 print(employee1)
-
+*/
 

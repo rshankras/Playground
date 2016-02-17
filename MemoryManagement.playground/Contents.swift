@@ -10,8 +10,8 @@ class   Teacher   {
     var  course :   String?
     
     init   ( name :   String ,  course :   String )   {
-        self . name  =  name
-        self . course  =  course
+        self.name  =  name
+        self.course  =  course
         print( "Reference count increased by 1" )
     }
     
@@ -20,15 +20,15 @@ class   Teacher   {
     }
 }
 
-let  teacher1  =   Teacher( name :   "Ravi" ,  course :   "Swift" )
+//let teacher1  =   Teacher( name :   "Ravi" ,  course :   "Swift" )
 
-func   createTeacher( )   {
-    _  =   Teacher( name :   "John" ,  course :   "Java" )
+func createTeacher( )   {
+    let teacher =  Teacher( name: "John",course:"Java" )
+    print(teacher)
 }
 
 createTeacher( )
 */
-
 
 /* weak reference */
 
@@ -79,7 +79,7 @@ createInstance()
 
 /* unowned reference */
 
-/*
+
 class Teacher {
     var name:String?
     var course:String?
@@ -120,5 +120,5 @@ func createInstance() {
 }
 
 createInstance()
-*/
+
 

@@ -15,8 +15,6 @@ let strTemp = ["Deepak","John","Steve","Ravi","Ganesh"]
 // reverse array with String
 
 func reverseString(items: Array<String>) -> Array<String> {
-    
-    _ = Array<String>()
     return items.reverse()
 }
 
@@ -39,6 +37,10 @@ class ReverseDemo<P> {
 let reverseDemo = ReverseDemo<String>()
 
 reverseDemo.reverseItems(strTemp)
+
+let reverseDemoNumber = ReverseDemo<Int>()
+
+reverseDemoNumber.reverseItems(numbers)
 
 
 

@@ -4,7 +4,7 @@ let numbers = [23,45,56,78,98]
 
 // reverse array with numbers
 
-func reverseNumber(items: Array<Int>) -> Array<Int> {
+func reverseNumber(items: [Int]) -> [Int] {
     return items.reverse()
 }
 
@@ -14,11 +14,12 @@ let strTemp = ["Deepak","John","Steve","Ravi","Ganesh"]
 
 // reverse array with String
 
-func reverseString(items: Array<String>) -> Array<String> {
+func reverseString(items: [String]) -> [String] {
     return items.reverse()
 }
 
 reverseString(strTemp)
+
 
 func reverseItems<T>(items:[T])-> [T] {
     return items.reverse()
@@ -41,6 +42,21 @@ reverseDemo.reverseItems(strTemp)
 let reverseDemoNumber = ReverseDemo<Int>()
 
 reverseDemoNumber.reverseItems(numbers)
+
+// operations using Generic Numbers.
+
+protocol Multipliable {
+    func *(lhs:Self, rhs: Self) -> Self
+}
+
+func squareOfNumber<M:Multipliable>(number:M)  -> M{
+    return number * number
+}
+
+extension Int: Multipliable {}
+extension Float: Multipliable {}
+
+squareOfNumber(20)
 
 
 

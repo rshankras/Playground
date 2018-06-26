@@ -15,7 +15,7 @@ let newMessage = "My age is \(myAge)" //(Converting value to a String using back
 //: String
 var movie:String = "Independence Day "
 
-movie.characters.count // count of string
+movie.count // count of string
 
 // Use NSString to format a double or float value
 var range = NSString(format: "%.2f", 24.5)
@@ -34,7 +34,7 @@ movie += "\(range)"
 var fruits:[String] = ["Orange", "Apple", "Grapes"] // short declaration with type.
 
 // insert item at index
-fruits.insert("Mangoes", atIndex: 2)
+fruits.insert("Mangoes", at: 2)
 
 // append item to the last
 fruits.append("Pine Apple")
@@ -43,7 +43,7 @@ fruits.append("Pine Apple")
 fruits.count
 
 // remove item
-fruits.removeAtIndex(1)
+fruits.remove(at: 1)
 
 // sort array elements
 fruits.sort { (a, b) -> Bool in
@@ -51,7 +51,7 @@ fruits.sort { (a, b) -> Bool in
 }
 
 // retrieve index using find
-fruits.indexOf("Mangoes")
+fruits.index(of: "Mangoes")
 
 //: Dicionary
 
@@ -70,7 +70,7 @@ var employees:[Int:String] = [1:"John",2:"Peter",3:"David"] //Short form with ty
 employees[4] = "Bob"
 
 // Remove an item using key
-employees.removeValueForKey(3)
+employees.removeValue(forKey: 3)
 
 
 //: Control flow
@@ -101,11 +101,6 @@ for fruit in fruits {
     print(fruit)
 }
 
-// traditional for statement
-for var index=0; index < fruits.count; index++ {
-    print(fruits[index])
-}
-
 // switch case
 var index:Int = 3
 
@@ -127,13 +122,13 @@ default :
 index = 0
 while index < fruits.count {
     print(fruits[index])
-    index++
+    index = index + 1
 }
 
 index = 0
 repeat {
     print(fruits[index])
-    index++
+    index = index + 1
 } while index < fruits.count
 
 //: functions
@@ -154,7 +149,7 @@ func sum(addNumber1 number1:Int, withNumber2 number2: Int) -> (Int) {
     return number1 + number2
 }
 
-print(sum(10, number2: 20))
+print(sum(number1: 10, number2: 20))
 
 print(sum(addNumber1: 10, withNumber2: 20))
 
@@ -171,7 +166,7 @@ print(sum(number1: 10, withNumber2: 20))
 func sum(number1:Int, withNumberDefault2: Int = 10) -> (Int) {
     return number1 + withNumberDefault2
 }
-print(sum(10))
+print(sum(number1: 10))
 
 // function with variadic paramters
 
@@ -183,12 +178,12 @@ func totalSum(numbers:Int...) -> Int {
     }
     return sum
 }
-totalSum(1,2,3,4,5,6,7,8, 9, 10)
+totalSum(numbers: 1,2,3,4,5,6,7,8, 9, 10)
 
 // functon with inout paramters
 
 var employee = "John"
-func greetings(inout temp:String) {
+func greetings(temp: inout String) {
     temp += "!"
 }
 
@@ -196,11 +191,11 @@ func displayMessage(name: String) {
     print(employee + name)
 }
 
-greetings(&employee)
+greetings(temp: &employee)
 
 print(employee)
 
-displayMessage("Hamja")
+displayMessage(name: "Hamja")
 
 /*
 var employee1 = "John"

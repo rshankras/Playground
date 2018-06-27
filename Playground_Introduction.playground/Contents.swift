@@ -45,6 +45,7 @@ page.liveView = demoView
 
 // Making Asynchronous call in Playground
 
+/*
 page.needsIndefiniteExecution = true
 
 let url = NSURL(string: "http://www.telize.com/geoip")
@@ -80,7 +81,7 @@ let task = session.dataTaskWithRequest(request) { (data: NSData?, response: NSUR
 
 task.resume()
 
-
+*/
 
 
 

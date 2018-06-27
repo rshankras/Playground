@@ -147,7 +147,7 @@ squr.draw()
 */
 
 
-/* Designated and Convenience Initializers
+//Designated and Convenience Initializers
 
 class Shape {
     var name: String
@@ -198,10 +198,12 @@ squr.draw()
 
 let squrNew = Square(length: 20)
 
-squrNew.draw() */
+squrNew.draw()
+ 
 
 
-/* Computed Property
+
+//Computed Property
 
 class Sqaure {
     
@@ -212,8 +214,8 @@ class Sqaure {
         get {
             return length * length
         }
-        set (newArea) {
-            self.length = sqrt(newArea)
+        set (vignesh) {
+            self.length = sqrt(vignesh)
         }
     }
 }
@@ -227,9 +229,9 @@ square.length // get call
 
 square.area // get call
 
-*/
 
-/* lazy property
+
+// lazy property
 
 class Person {
     
@@ -238,22 +240,23 @@ class Person {
     init (name: String) {
         self.name = name
     }
-    
-    lazy var message: String = self.getMessage()
-    
     func getMessage() -> String {
         return "Hello \(name)"
     }
+    
+    lazy var message: String = self.getMessage()
+    
+ 
 }
 
 let person = Person(name: "Jason")
 
 person.message
 
-*/
 
-/* Property Observers */
-/*
+
+/* Property Observers
+
 
 class Square {
 
@@ -380,9 +383,11 @@ rectangle2.length = 24
 
 print(rectangle1.length)
 print(rectangle2.length)
+ */
 
 /* Pass by reference */
 
+/*
 class Rectangle {
     var length: Int = 0
     var breadth: Int = 0
@@ -398,5 +403,9 @@ rectangle2.length = 24
 
 print(rectangle1.length)
 print(rectangle2.length)
-
 */
+
+
+
+
+

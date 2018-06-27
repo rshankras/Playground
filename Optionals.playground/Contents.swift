@@ -3,20 +3,20 @@
 
 // Example of Optionals
 
-/*
+
 var name : String?
 
 name = "Ravi"
-name = .None
+name = .none
 
 func getMessage(msg: String?) -> String? {
     return msg!
 }
 
-if let msg = getMessage("Ravi") {
+if let msg = getMessage(msg: "Ravi") {
     print(msg)
 }
-*/
+
 
 
 class Job {
@@ -42,11 +42,9 @@ satya.work = satyaWork
 satya.work?.description
 
 
-if satyaWork?.description != nil {
-    let desc = satyaWork?.description
-} else {
+
     
-}
+
 
 if let desc = satyaWork?.description {
     print(desc)

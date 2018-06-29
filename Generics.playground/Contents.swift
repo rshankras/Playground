@@ -1,52 +1,52 @@
 import UIKit
 
-let numbers = [23,45,56,78,98]
+var numbers = [23,45,56,78,98]
 
 // reverse array with numbers
 
 func reverseNumber(items: [Int]) -> [Int] {
-    return items.reverse()
+    return items.reversed()
 }
 
-reverseNumber(numbers)
+reverseNumber(items: numbers)
 
 let strTemp = ["Deepak","John","Steve","Ravi","Ganesh"]
 
 // reverse array with String
 
 func reverseString(items: [String]) -> [String] {
-    return items.reverse()
+    return items.reversed()
 }
 
-reverseString(strTemp)
+reverseString(items: strTemp)
 
 
 func reverseItems<T>(items:[T])-> [T] {
-    return items.reverse()
+    return items.reversed()
 }
 
-reverseItems(strTemp)
-reverseItems(numbers)
+reverseItems(items: strTemp)
+reverseItems(items: numbers)
 
 class ReverseDemo<P> {
     
     func reverseItems(items:[P])-> [P] {
-        return items.reverse()
+        return items.reversed()
     }
 }
 
 let reverseDemo = ReverseDemo<String>()
 
-reverseDemo.reverseItems(strTemp)
+reverseDemo.reverseItems(items: strTemp)
 
 let reverseDemoNumber = ReverseDemo<Int>()
 
-reverseDemoNumber.reverseItems(numbers)
+reverseDemoNumber.reverseItems(items: numbers)
 
 // operations using Generic Numbers.
 
 protocol Multipliable {
-    func *(lhs:Self, rhs: Self) -> Self
+    static func *(lhs:Self, rhs: Self) -> Self
 }
 
 func squareOfNumber<M:Multipliable>(number:M)  -> M{
@@ -56,7 +56,7 @@ func squareOfNumber<M:Multipliable>(number:M)  -> M{
 extension Int: Multipliable {}
 extension Float: Multipliable {}
 
-squareOfNumber(20)
+squareOfNumber(number: 20)
 
 
 

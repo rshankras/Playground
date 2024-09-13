@@ -1,81 +1,93 @@
-import UIKit
+//: # Swift Basics Playground
+//:
+//: This playground demonstrates fundamental concepts in Swift programming.
 
-//: Variables and Constants
+//: ## Variables and Constants
 
+//: Use 'var' for mutable variables and 'let' for immutable constants
+var myName = "Ravi" // Mutable variable
+let pi = 3.14 // Immutable constant
+
+//: Swift uses type inference to automatically detect types
 var myStr = "Swift"
-var myValue = 23.1 //(Implicit variable declaration or type inference)
-var myDoubleValue: Double = 23 //(Explicit variable declaration)
+var myValue = 23.1 // Inferred as Double
 
-//: let
+//: You can also explicitly declare types
+var myDoubleValue: Double = 23
 
-let myAge = 38
-let message = "My age is " + String(myAge) //(Converting value to a String)
-let newMessage = "My age is \(myAge)" //(Converting value to a String using backslash or interpolation
+//: ## String Interpolation
 
-//: String
-var movie:String = "Independence Day "
+let age = 38
+let message = "My age is \(age)"
 
-movie.count // count of string
+//: ## Basic Data Types
 
-// Use NSString to format a double or float value
-var range = NSString(format: "%.2f", 24.5)
+let cityName: String = "Mumbai"
+let population: Int = 20_000_000
+let temperature: Double = 26.7
+let hasMonsoon: Bool = true
 
-// Concatenate String values
-movie += "\(range)"
+//: ## Collections
 
-//: Array
+//: ### Arrays
 
-// Declarations
+var fruits: [String] = ["Orange", "Apple", "Grapes"]
 
-//var fruits = ["Orange", "Apple", "Grapes"] //– Short declartion
-//var fruits:Array<String> = ["Orange","Apple", "Grapes"] //– Long declaration
-// var fruits:[String] = [] – Assign empty array
-
-var fruits:[String] = ["Orange", "Apple", "Grapes"] // short declaration with type.
-
-// insert item at index
-fruits.insert("Mangoes", at: 2)
-
-// append item to the last
-fruits.append("Pine Apple")
-
-// count of array
-fruits.count
-
-// remove item
+//: Array operations
+fruits.insert("Mango", at: 2)
+fruits.append("Pineapple")
+let count = fruits.count
 fruits.remove(at: 1)
 
-// sort array elements
-fruits.sort { (a, b) -> Bool in
-    a > b
+//: Sorting
+fruits.sort()
+
+//: Finding an element
+if let mangoIndex = fruits.firstIndex(of: "Mango") {
+    print("Mango found at index: \(mangoIndex)")
+} else {
+    print("Mango not found")
 }
 
-// retrieve index using find
-fruits.index(of: "Mangoes")
+//: ### Sets
 
-//: Dicionary
+var colors: Set<String> = ["Red", "Green", "Blue"]
 
-// Declaration
+//: Adding elements
+colors.insert("Yellow")
 
-// var employees = [1:"John",2:"Peter",3:"David"] // Short form
+//: Removing elements
+colors.remove("Green")
 
-// var employees:Dictionary<Int, String> = [1:"John",2:"Peter",3:"David"] // Long form
+//: Checking membership
+if colors.contains("Red") {
+    print("Set contains Red")
+}
 
-//var employees:[Int:String] = Dictionary() // Empty dictionary
+//: Set operations
+let primaryColors: Set<String> = ["Red", "Blue", "Yellow"]
+let secondaryColors: Set<String> = ["Green", "Purple", "Orange"]
 
-var employees:[Int:String] = [1:"John",2:"Peter",3:"David"] //Short form with type
+let allColors = primaryColors.union(secondaryColors)
+let commonColors = primaryColors.intersection(secondaryColors)
+let uniqueToSecondary = secondaryColors.subtracting(primaryColors)
 
+//: ### Dictionaries
 
-// Add new item to dictionary
+var employees: [Int: String] = [1: "John", 2: "Peter", 3: "David"]
+
+//: Dictionary operations
 employees[4] = "Bob"
-
-// Remove an item using key
 employees.removeValue(forKey: 3)
 
+//: Iterating over a dictionary
+for (id, name) in employees {
+    print("Employee \(id): \(name)")
+}
 
-//: Control flow
+//: ## Control Flow
 
-// if else
+//: If-else statement
 if fruits[0] == "Grapes" {
     print("for breakfast")
 } else if fruits[0] == "Apple" {
@@ -84,127 +96,100 @@ if fruits[0] == "Grapes" {
     print("Nothing")
 }
 
-// for statements
-
-// exclusive range
-for index in 0..<fruits.count {
-    print(fruits[index])
-}
-
-// inclusive range
-for index in 0...fruits.count-1 {
-    print(fruits[index])
-}
-
-// iterate array items
+//: For loop
 for fruit in fruits {
     print(fruit)
 }
 
-// switch case
-var index:Int = 3
-
-// supports more than 1 value
-// no need of break statement
-
-switch index {
-case 1:
-    print("for breakfast")
-case 3:
-    print("for evening")
-case 2, 4 :
-    print("for lunch")
-default :
-    print("None")
-}
-// while and repeat while
-
-index = 0
-while index < fruits.count {
-    print(fruits[index])
-    index = index + 1
+//: While loop
+var counter = 0
+while counter < 5 {
+    print("Counter is \(counter)")
+    counter += 1
 }
 
-index = 0
-repeat {
-    print(fruits[index])
-    index = index + 1
-} while index < fruits.count
+//: Switch statement
+let someCharacter: Character = "z"
+switch someCharacter {
+case "a":
+    print("The first letter of the alphabet")
+case "z":
+    print("The last letter of the alphabet")
+default:
+    print("Some other character")
+}
 
-//: functions
+//: ## Functions
 
-// with and without paramters
-
-func sum(number1:Int, number2: Int) -> (Int) {
+//: Basic function
+func sum(number1: Int, number2: Int) -> Int {
     return number1 + number2
 }
 
-func sum() -> (Int) {
-    return 10 + 5
+//: Function with default parameter
+func greet(name: String = "Guest") -> String {
+    return "Hello, \(name)!"
 }
 
-// function with external paramter name
-
-func sum(addNumber1 number1:Int, withNumber2 number2: Int) -> (Int) {
-    return number1 + number2
+//: Function with external parameter names and variadic parameters
+func calculate(using operation: String, on numbers: Int...) -> Int {
+    switch operation {
+    case "add":
+        return numbers.reduce(0, +)
+    case "subtract":
+        return numbers.reduce(0, -)
+    case "multiply":
+        return numbers.reduce(1, *)
+    case "divide":
+        return numbers.reduce(numbers[0] * numbers[0]) { $0 / $1 } // Avoids division by 0, assuming non-zero numbers
+    default:
+        print("Invalid operation")
+        return 0
+    }
 }
 
-print(sum(number1: 10, number2: 20))
+//: Example usage:
+let result = calculate(using: "add", on: 10, 20, 30)
+print("Result: \(result)") // Output: Result: 60
 
-print(sum(addNumber1: 10, withNumber2: 20))
-
-// function with same local and external paramter name
-
-func sum(number1 number1:Int, withNumber2: Int) -> (Int) {
-    return number1 + withNumber2
-}
-
-print(sum(number1: 10, withNumber2: 20))
-
-// function with default paramter value
-
-func sum(number1:Int, withNumberDefault2: Int = 10) -> (Int) {
-    return number1 + withNumberDefault2
-}
-print(sum(number1: 10))
-
-// function with variadic paramters
-
-//: Variadic parameters
-func totalSum(numbers:Int...) -> Int {
+//: Function with variadic parameters
+func totalSum(numbers: Int...) -> Int {
     var sum = 0
     for number in numbers {
         sum += number
     }
     return sum
 }
-totalSum(numbers: 1,2,3,4,5,6,7,8, 9, 10)
+print(totalSum(numbers: 1, 2, 3, 4, 5))
 
-// functon with inout paramters
+//: Function with inout parameter
+func increment(number: inout Int) {
+    number += 1
+}
+var value = 5
+increment(number: &value)
+print(value) // Output: 6
 
-var employee = "John"
-func greetings(temp: inout String) {
-    temp += "!"
+//: ## Operators
+
+//: Ternary operator
+let score = 64
+let examResult = (score >= 60) ? "Pass" : "Fail"
+
+//: ## Optionals
+
+var optionalName: String? = "John"
+//optionalName = nil // This is valid
+
+//: Optional binding
+if let name = optionalName {
+    print("Hello, \(name)")
+} else {
+    print("Hello, anonymous")
 }
 
-func displayMessage(name: String) {
-    print(employee + name)
-}
+//: Optional chaining
+let uppercase = optionalName?.uppercased()
 
-greetings(temp: &employee)
-
-print(employee)
-
-displayMessage(name: "Hamja")
-
-/*
-var employee1 = "John"
-func greetings(var temp:String) {
-    temp += "!"
-}
-
-greetings(employee1)
-
-print(employee1)
-*/
-
+//: Nil-coalescing operator
+print(uppercase ?? "")

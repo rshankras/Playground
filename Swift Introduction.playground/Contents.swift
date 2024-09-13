@@ -193,3 +193,5 @@ let uppercase = optionalName?.uppercased()
 
 //: Nil-coalescing operator
 print(uppercase ?? "")
+
+//: [Learn more about Swift Basics](https://rshankar.com/swift-quick-reference/)

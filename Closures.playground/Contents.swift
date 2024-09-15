@@ -68,7 +68,25 @@ names
 
 
 
+func fetchData(from url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
+    URLSession.shared.dataTask(with: url) { data, response, error in
+        if let error = error {
+            completion(.failure(error))
+        } else if let data = data {
+            completion(.success(data))
+        }
+    }.resume()
+}
 
+let url = URL(string: "https://api.example.com/data")!
+fetchData(from: url) { result in
+    switch result {
+    case .success(let data):
+        print("Received data: \(data)")
+    case .failure(let error):
+        print("Error: \(error)")
+    }
+}
 
 
 
